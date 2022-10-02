@@ -1,0 +1,6 @@
+.cosas_por_mencionar.md
+.venv
+.ipynb_checkpoints
+.DS_Store
+*ppt*
+*.code-workspace
