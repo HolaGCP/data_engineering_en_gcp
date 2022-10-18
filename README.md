@@ -44,6 +44,11 @@ https://www.youtube.com/channel/UCJS9pqu9BzkAMNTmzNMNhvg
 7. Google una serie de training para startups.
 https://cloudonair.withgoogle.com/events/technical-guide-for-startups-series
 
+8. Mejores prácticas para analytics en google cloud.
+https://cloud.google.com/architecture/framework/system-design/data-analytics
+
+9. Patrones de diseño en Analytics.
+https://cloud.google.com/architecture/reference-patterns/overview
 
 # ¿Cómo contribuir al contenido del curso?
 
