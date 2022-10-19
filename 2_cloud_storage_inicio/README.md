@@ -14,6 +14,8 @@
 
 6. [Cómo transferir tus datos a Google Cloud (Resumen de Opciones) - Video](https://cloud.google.com/blog/topics/developers-practitioners/how-transfer-your-data-google-cloud)
 
+7. [Laboratorio: Jugando con el SDK de python de Cloud Storage](laboratorio.md)
+
 # Videos Adicionales:
 
 1. [Cloud Storage Bytes | Opciones de configuración de los buckets en Cloud Storage](https://www.youtube.com/watch?v=8DMOJ6Lgm7s&list=PLIivdWyY5sqJcBvDh5dfPoblLGhG1R1-O)
