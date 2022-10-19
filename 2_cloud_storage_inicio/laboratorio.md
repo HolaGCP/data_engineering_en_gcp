@@ -28,7 +28,7 @@ Espera unos minutos hasta que se cree la instancia. Vertex AI Workbench inicia l
 
 ## Experimenta con los notebooks
 
-1. Abre el notebook de "1. Líbrería de Cliente"
+1. Abre el notebook de ["1. Líbrería de Cliente"](./1.%20Librer%C3%ADa%20de%20Cliente.ipynb)
 
 
 
