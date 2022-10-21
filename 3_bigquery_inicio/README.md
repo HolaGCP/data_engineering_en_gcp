@@ -13,7 +13,6 @@
 
 5. [Carga de datos a través de Línea de Comandos](https://cloud.google.com/bigquery/docs/quickstarts/load-data-bq)
 
-6. [Laboratorio de cargando datos de Binance](./cargando_tablas_a_bigquery.md)
-
 6. Habilitar API de Transfer Service.
 
+7. [Laboratorio de cargando datos de Binance](./cargando_tablas_a_bigquery.md)

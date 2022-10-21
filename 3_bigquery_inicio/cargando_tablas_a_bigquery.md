@@ -1,27 +1,38 @@
 # Cargando Tablas de Binance a Bigquery
 
+## Abrir Cloud Shell Editor
 
-0. Este repo contiene alguno scripts que usamos durante el curso dado el 14/07/2022 al 18/07/2022.
+1. Para empezar primero abrir la terminal de cloud shell.
+
+2. Clonar el repositorio en el directorio home.
 
 ```bash
-cd
-rm -rf data_engineering_en_gcp
-git clone https://github.com/HolaGCP/data_engineering_en_gcp.git
+cd &&rm -rf data_engineering_en_gcp && git clone https://github.com/HolaGCP/data_engineering_en_gcp.git
+```
+
+3. Abrir Cloud Shell Editor.
+
+```bash
 cloudshell ws $HOME/data_engineering_en_gcp
 ```
 
-De ser necesario setea el proyecto:
+## Ejercicios
+
+1. Abrir terminal del editor y verificar que el proyecto este configurado.
+
+2. Crear un bucket con el mismo nombre del proyecto en caso no exista.
 
 ```bash
-gcloud config set project nth-victory-357100
+project=$(gcloud config get project)
+gsutil mb -b on -l us-east1 gs://$project/
 ```
 
-1. Descargar el archivo y cargarlo a cloud storage. antes de ejecutar el comando debes reemplazar el bucket de destino. En este laboratorio estamos usando "rimac-arnold-huete".
+3. Descargar el archivo y cargarlo a cloud storage en el mismo bucket de proyecto.
 
 ```bash
 curl -O "https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2022-07.zip"
 unzip BTCUSDT-1m-2022-07.zip
-gsutil cp BTCUSDT-1m-2022-07.csv gs://rimac-arnold-huete/binance-data/BTCUSDT-1m-2022-07.csv
+gsutil cp BTCUSDT-1m-2022-07.csv gs://$project/binance-data/BTCUSDT-1m-2022-07.csv
 ```
 
 2. Cargar la tabla desde la consola de gcp.
@@ -29,9 +40,9 @@ gsutil cp BTCUSDT-1m-2022-07.csv gs://rimac-arnold-huete/binance-data/BTCUSDT-1m
 3. Cargar la tabla desde la linea de comandos.
 
 ```bash
-bq load --source_format=CSV --replace --allow_quoted_newlines binance.BTCUSDT gs://rimac-arnold-huete/binance-data/BTCUSDT-1m-2022-07.csv sesion03/schema.json
+bq load --source_format=CSV --replace --allow_quoted_newlines binance.BTCUSDT gs://$project/binance-data/BTCUSDT-1m-2022-07.csv 3_bigquery_inicio/schema.json
 ```
 
-4. Cargar la tabla con el trasnfer service.
+4. Cargar la tabla con el transfer service.
 
 5. Crear el transfer service con linea de comandos.
