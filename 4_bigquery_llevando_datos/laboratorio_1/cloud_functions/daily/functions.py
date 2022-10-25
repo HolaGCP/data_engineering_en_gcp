@@ -60,11 +60,13 @@ def download_klines(pair_coin,date,fq="1m"):
 #pd.date_range(start='2022-07-01', end='2022-07-31')
 # %%
 def main():
+    from google.cloud import storage
+    client = storage.Client()
     for dt in pd.date_range(start='2022-07-01', end=datetime.now().strftime("%Y-%m-%d")):
         dt_str = dt.strftime("%Y-%m-%d")
         logging.info(f"downloading {dt_str}")
         df = download_klines("BTCUSDT",dt_str)
-        df.to_csv(f"gs://rimac-arnold-huete/binance-data/daily/BTCUSDT-1m-{dt_str}.csv",
+        df.to_csv(f"gs://{client.project}/binance-data/daily/BTCUSDT-1m-{dt_str}.csv",
             index=False, header=False)
         if dt_str>='2022-07-31':
             logging.info("sleeping 5 minutes")
