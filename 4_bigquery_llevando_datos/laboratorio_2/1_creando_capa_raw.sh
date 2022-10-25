@@ -23,4 +23,4 @@ bq --location=us-east1 load --source_format=CSV --replace --skip_leading_rows=1 
 
 # Copiando funcion udf para trabajar con xml
 project=$(gcloud config get project)
-gsutil cp $folder/udfs/xml_udf.js 
+gsutil cp $folder/udfs/xml_udf.js gs://$project/bigquery/udfs/xml_udf.js
