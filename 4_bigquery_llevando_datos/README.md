@@ -1,6 +1,5 @@
-# Sesión 04 - Bigquery Data Transfer, Particionamiento y Clustering.
+# Llevando Datos a Bigquery
 
+1. [Cargando datos a Bigquery de forma Incremental](./laboratorio_1/README.md).
 
-1. [Cargar la tabla con el transfer service]().
-
-2. [Crear el transfer service con linea de comandos.]()
+2. [Creando las 3 capas del Datawarehouse](./laboratorio_2/README.md)

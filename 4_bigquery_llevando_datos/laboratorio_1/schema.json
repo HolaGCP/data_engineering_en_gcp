@@ -1,0 +1,14 @@
+[
+    {"name":"open_time","type":"TIMESTAMP"},
+    {"name":"open","type":"NUMERIC"},
+    {"name":"high","type":"NUMERIC"},
+    {"name":"low","type":"NUMERIC"},
+    {"name":"close","type":"NUMERIC"},
+    {"name":"volume","type":"NUMERIC"},
+    {"name":"close_time","type":"TIMESTAMP"},
+    {"name":"quote_asset_volume","type":"NUMERIC"},
+    {"name":"number_trades","type":"INTEGER"},
+    {"name":"taker_buy_base_asset_volume","type":"NUMERIC"},
+    {"name":"taker_buy_quote_asset_volume","type":"NUMERIC"},
+    {"name":"ignore","type":"INTEGER"}
+]
