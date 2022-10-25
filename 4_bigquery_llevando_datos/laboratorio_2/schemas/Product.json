@@ -1,0 +1,127 @@
+[
+  {
+    "mode": "REQUIRED",
+    "name": "ProductID",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "Name",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "ProductNumber",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "MakeFlag",
+    "type": "BOOLEAN"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "FinishedGoodsFlag",
+    "type": "BOOLEAN"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "Color",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "SafetyStockLevel",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "ReorderPoint",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "StandardCost",
+    "type": "NUMERIC"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "ListPrice",
+    "type": "NUMERIC"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "Size",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "SizeUnitMeasureCode",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "WeightUnitMeasureCode",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "Weight",
+    "type": "NUMERIC"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "DaysToManufacture",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ProductLine",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "Class",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "Style",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ProductSubcategoryID",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ProductModelID",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "SellStartDate",
+    "type": "DATETIME"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "SellEndDate",
+    "type": "DATETIME"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "DiscontinuedDate",
+    "type": "DATETIME"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "rowguid",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "ModifiedDate",
+    "type": "STRING"
+  }
+]

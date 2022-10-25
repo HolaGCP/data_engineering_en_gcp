@@ -1,6 +1,6 @@
 # Cargando tablas de Binance a Bigquery de forma incremental
 
-## Diagrama de Arquitectura de la solucion a implementar.
+# Diagrama de Arquitectura de la solucion a implementar.
 
 ![alt text](arquitectura.png)
 

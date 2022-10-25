@@ -1,0 +1,32 @@
+[
+  {
+    "mode": "REQUIRED",
+    "name": "BusinessEntityID",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "Name",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "SalesPersonID",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "Demographics",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "rowguid",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "ModifiedDate",
+    "type": "STRING"
+  }
+]

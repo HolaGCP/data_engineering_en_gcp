@@ -1,0 +1,57 @@
+[
+  {
+    "mode": "REQUIRED",
+    "name": "SalesOrderID",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "SalesOrderDetailID",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "CarrierTrackingNumber",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "OrderQty",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "ProductID",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "SpecialOfferID",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "UnitPrice",
+    "type": "NUMERIC"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "UnitPriceDiscount",
+    "type": "NUMERIC"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "LineTotal",
+    "type": "NUMERIC"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "rowguid",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "ModifiedDate",
+    "type": "STRING"
+  }
+]

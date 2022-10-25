@@ -1,0 +1,132 @@
+[
+  {
+    "mode": "REQUIRED",
+    "name": "SalesOrderID",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "RevisionNumber",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "OrderDate",
+    "type": "DATETIME"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "DueDate",
+    "type": "DATETIME"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "ShipDate",
+    "type": "DATETIME"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "Status",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "OnlineOrderFlag",
+    "type": "BOOLEAN"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "SalesOrderNumber",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "PurchaseOrderNumber",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "AccountNumber",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "CustomerID",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "SalesPersonID",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "TerritoryID",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "BillToAddressID",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "ShipToAddressID",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "ShipMethodID",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "CreditCardID",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "CreditCardApprovalCode",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "CurrencyRateID",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "SubTotal",
+    "type": "NUMERIC"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "TaxAmt",
+    "type": "NUMERIC"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "Freight",
+    "type": "NUMERIC"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "TotalDue",
+    "type": "NUMERIC"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "Comment",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "rowguid",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "ModifiedDate",
+    "type": "STRING"
+  }
+]

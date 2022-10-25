@@ -1,0 +1,32 @@
+[
+  {
+    "mode": "REQUIRED",
+    "name": "ProductModelID",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "Name",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "CatalogDescription",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "Instructions",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "rowguid",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "ModifiedDate",
+    "type": "STRING"
+  }
+]

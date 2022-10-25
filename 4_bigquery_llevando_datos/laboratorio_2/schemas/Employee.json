@@ -1,0 +1,82 @@
+[
+  {
+    "mode": "REQUIRED",
+    "name": "BusinessEntityID",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "NationalIDNumber",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "LoginID",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "OrganizationNode",
+    "type": "BYTES"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "OrganizationLevel",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "JobTitle",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "BirthDate",
+    "type": "DATE"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "MaritalStatus",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "Gender",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "HireDate",
+    "type": "DATE"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "SalariedFlag",
+    "type": "BOOLEAN"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "VacationHours",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "SickLeaveHours",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "CurrentFlag",
+    "type": "BOOLEAN"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "rowguid",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "ModifiedDate",
+    "type": "STRING"
+  }
+]

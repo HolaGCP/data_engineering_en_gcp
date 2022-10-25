@@ -1,0 +1,67 @@
+[
+  {
+    "mode": "REQUIRED",
+    "name": "BusinessEntityID",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "PersonType",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "NameStyle",
+    "type": "BOOLEAN"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "Title",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "FirstName",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "MiddleName",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "LastName",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "Suffix",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "EmailPromotion",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "AdditionalContactInfo",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "Demographics",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "rowguid",
+    "type": "STRING"
+  },
+  {
+    "mode": "REQUIRED",
+    "name": "ModifiedDate",
+    "type": "STRING"
+  }
+]
