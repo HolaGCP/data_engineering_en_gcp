@@ -21,6 +21,12 @@ bq --location=us-east1 load --source_format=CSV --replace --skip_leading_rows=1 
 bq --location=us-east1 load --source_format=CSV --replace --skip_leading_rows=1 --allow_quoted_newlines raw_zone.StateProvince $folder/data/StateProvince.csv $folder/schemas/StateProvince.json
 bq --location=us-east1 load --source_format=CSV --replace --skip_leading_rows=1 --allow_quoted_newlines raw_zone.Store $folder/data/Store.csv $folder/schemas/Store.json
 
-# Copiando funcion udf para trabajar con xml
+# Copiando función udf para trabajar con xml
 project=$(gcloud config get project)
 gsutil cp $folder/udfs/xml_udf.js gs://$project/bigquery/udfs/xml_udf.js
+
+# Creando función en el dataset raw_zone.
+# como crear funciones udf -> https://github.com/salrashid123/bq-udf-xml
+# porque hace mas lento las consultas las funciones de javascript -> https://stackoverflow.com/questions/50402276/big-query-user-defined-function-dramatically-slows-down-the-query
+sql=$(cat "$folder/udfs/xml_to_json.sql" | sed "s/__bucket__/${project}/g" )
+bq query --use_legacy_sql=false $sql

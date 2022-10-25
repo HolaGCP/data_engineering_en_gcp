@@ -1,21 +1,8 @@
-CREATE SCHEMA IF not EXISTS staging_zone;
+SET @@dataset_project_id = 'secret-footing-366022';
 
---https://github.com/salrashid123/bq-udf-xml
---https://stackoverflow.com/questions/50402276/big-query-user-defined-function-dramatically-slows-down-the-query
-drop function if exists raw_zone.xml_to_json;
-CREATE FUNCTION raw_zone.xml_to_json(a STRING)
-  RETURNS STRING  
-  LANGUAGE js AS
-"""  
-      return  frmXML(a);
-"""    
-OPTIONS (
-  library=["gs://bk_sqlserver_ahg/xml_udf.js"]
-);
+CREATE SCHEMA IF not EXISTS staging_zone OPTIONS(location="us-east1");
 
-
-DROP TABLE IF EXISTS `focus-infusion-348919.staging_zone.DimPersona`;
-CREATE TABLE `focus-infusion-348919.staging_zone.DimPersona` AS
+CREATE OR REPLACE TABLE `staging_zone.DimPersona` AS
 SELECT 
     p.BusinessEntityID PersonaID,
 coalesce(p.Title,'') || ' ' || coalesce(p.FirstName,'') || ' '||
@@ -49,40 +36,37 @@ CAST(REPLACE(JSON_EXTRACT(raw_zone.xml_to_json(p.Demographics),'$.IndividualSurv
 CAST(REPLACE(JSON_EXTRACT(raw_zone.xml_to_json(p.Demographics),'$.IndividualSurvey.HomeOwnerFlag._text'),"\"","") AS INTEGER) DuenoCasa,
 CAST(REPLACE(JSON_EXTRACT(raw_zone.xml_to_json(p.Demographics),'$.IndividualSurvey.NumberCarsOwned._text'),"\"","") AS INTEGER) NumeroCarros,
 CAST(REPLACE(JSON_EXTRACT(raw_zone.xml_to_json(p.Demographics),'$.IndividualSurvey.CommuteDistance._text'),"\"","") AS STRING) DistanciaTrabajo
-FROM  `focus-infusion-348919.raw_zone.Person` p
+FROM  `raw_zone.Person` p
 LEFT JOIN (SELECT * FROM (
         SELECT *, ROW_NUMBER() over (PARTITION BY BusinessEntityID ORDER BY ModifiedDate DESC) RN
-        FROM `focus-infusion-348919.raw_zone.BusinessEntityAddress`) A WHERE RN=1) bea ON bea.BusinessEntityID = p.BusinessEntityID
-LEFT JOIN `focus-infusion-348919.raw_zone.Address` a ON a.AddressID = bea.AddressID
-LEFT JOIN `focus-infusion-348919.raw_zone.StateProvince` sp ON sp.StateProvinceID = a.StateProvinceID
-LEFT JOIN `focus-infusion-348919.raw_zone.CountryRegion` cr ON cr.CountryRegionCode = sp.CountryRegionCode
-LEFT JOIN `focus-infusion-348919.raw_zone.AddressType` adt ON adt.AddressTypeID = bea.AddressTypeID
-LEFT OUTER JOIN `focus-infusion-348919.raw_zone.EmailAddress` ea ON ea.BusinessEntityID = p.BusinessEntityID
-LEFT OUTER JOIN `focus-infusion-348919.raw_zone.PersonPhone` pp ON pp.BusinessEntityID = p.BusinessEntityID
-LEFT OUTER JOIN `focus-infusion-348919.raw_zone.PhoneNumberType` pnt ON pnt.PhoneNumberTypeID = pp.PhoneNumberTypeID;
+        FROM `raw_zone.BusinessEntityAddress`) A WHERE RN=1) bea ON bea.BusinessEntityID = p.BusinessEntityID
+LEFT JOIN `raw_zone.Address` a ON a.AddressID = bea.AddressID
+LEFT JOIN `raw_zone.StateProvince` sp ON sp.StateProvinceID = a.StateProvinceID
+LEFT JOIN `raw_zone.CountryRegion` cr ON cr.CountryRegionCode = sp.CountryRegionCode
+LEFT JOIN `raw_zone.AddressType` adt ON adt.AddressTypeID = bea.AddressTypeID
+LEFT OUTER JOIN `raw_zone.EmailAddress` ea ON ea.BusinessEntityID = p.BusinessEntityID
+LEFT OUTER JOIN `raw_zone.PersonPhone` pp ON pp.BusinessEntityID = p.BusinessEntityID
+LEFT OUTER JOIN `raw_zone.PhoneNumberType` pnt ON pnt.PhoneNumberTypeID = pp.PhoneNumberTypeID;
 
 
-select count(1),count(distinct PersonaID) from `focus-infusion-348919.staging_zone.DimPersona`;
+select count(1),count(distinct PersonaID) from `staging_zone.DimPersona`;
 
-DROP TABLE IF EXISTS `focus-infusion-348919.staging_zone.DimCliente`;
-CREATE TABLE `focus-infusion-348919.staging_zone.DimCliente` AS
+CREATE OR REPLACE TABLE `staging_zone.DimCliente` AS
 select a.CustomerID ClienteID, b.*
-FROM `focus-infusion-348919.raw_zone.Customer` a
-left join `focus-infusion-348919.staging_zone.DimPersona` b on a.PersonID = b.PersonaID
+FROM `raw_zone.Customer` a
+left join `staging_zone.DimPersona` b on a.PersonID = b.PersonaID
 WHERE a.PersonID IS not NULL;
 
-select count(1),count(distinct ClienteID) from `focus-infusion-348919.staging_zone.DimCliente`;
+select count(1),count(distinct ClienteID) from `staging_zone.DimCliente`;
 
-DROP TABLE IF EXISTS `focus-infusion-348919.staging_zone.DimVendedor`;
-CREATE TABLE `focus-infusion-348919.staging_zone.DimVendedor` AS
+CREATE OR REPLACE TABLE `staging_zone.DimVendedor` AS
 select a.BusinessEntityID VendedorID, b.*
-FROM `focus-infusion-348919.raw_zone.SalesPerson` a
-left join `focus-infusion-348919.staging_zone.DimPersona` b on a.BusinessEntityID = b.PersonaID;
+FROM `raw_zone.SalesPerson` a
+left join `staging_zone.DimPersona` b on a.BusinessEntityID = b.PersonaID;
 
-select count(1),count(distinct VendedorID) from `focus-infusion-348919.staging_zone.DimVendedor`;
+select count(1),count(distinct VendedorID) from `staging_zone.DimVendedor`;
 
-DROP TABLE IF EXISTS `focus-infusion-348919.staging_zone.DimDistribuidor`;
-CREATE TABLE `focus-infusion-348919.staging_zone.DimDistribuidor` AS
+CREATE OR REPLACE TABLE `staging_zone.DimDistribuidor` AS
 SELECT
     s.BusinessEntityID DistribuidorID,
     s.Name Distribuidor,
@@ -96,13 +80,12 @@ SELECT
     CAST(REPLACE(JSON_EXTRACT(raw_zone.xml_to_json(Demographics),'$.StoreSurvey.Brands._text'),"\"","") AS STRING) Marcas,
     CAST(REPLACE(JSON_EXTRACT(raw_zone.xml_to_json(Demographics),'$.StoreSurvey.Internet._text'),"\"","") AS STRING) Internet,
     CAST(REPLACE(JSON_EXTRACT(raw_zone.xml_to_json(Demographics),'$.StoreSurvey.NumberEmployees._text'),"\"","") AS INTEGER) NumeroEmpleados
-FROM `focus-infusion-348919.raw_zone.Store` s
-left join `focus-infusion-348919.raw_zone.Customer` a on a.StoreID=s.BusinessEntityID and a.PersonID is null;
+FROM `raw_zone.Store` s
+left join `raw_zone.Customer` a on a.StoreID=s.BusinessEntityID and a.PersonID is null;
 
-select count(1),count(distinct DistribuidorID) from `focus-infusion-348919.staging_zone.DimDistribuidor`;
+select count(1),count(distinct DistribuidorID) from `staging_zone.DimDistribuidor`;
 
-DROP TABLE IF EXISTS `focus-infusion-348919.staging_zone.DimTerritorio`;
-CREATE TABLE `focus-infusion-348919.staging_zone.DimTerritorio` AS
+CREATE OR REPLACE TABLE `staging_zone.DimTerritorio` AS
 SELECT TerritoryID TerritorioID,
        Name Territorio,
        CountryRegionCode CodigoPais,
@@ -111,12 +94,11 @@ SELECT TerritoryID TerritorioID,
        SalesLastYear VentasUltimoAno,
        CostYTD CostoYTD,
        CostLastYear CostoUltimoAno
-FROM `focus-infusion-348919.raw_zone.SalesTerritory`;
+FROM `raw_zone.SalesTerritory`;
 
-select count(1),count(distinct TerritorioID) from `focus-infusion-348919.staging_zone.DimTerritorio`;
+select count(1),count(distinct TerritorioID) from `staging_zone.DimTerritorio`;
 
-DROP TABLE IF EXISTS `focus-infusion-348919.staging_zone.DimProducto`;
-CREATE TABLE `focus-infusion-348919.staging_zone.DimProducto` AS
+CREATE OR REPLACE TABLE `staging_zone.DimProducto` AS
 select
 j.ProductID ProductoID,
 J.Name Producto,
@@ -128,17 +110,16 @@ j.ListPrice PrecioLista,
 K.Name SubCategoria,
 l.Name Categoria,
 m.Name Modelo
-from `focus-infusion-348919.raw_zone.Product` j
-left join `focus-infusion-348919.raw_zone.ProductSubcategory` k on j.ProductSubcategoryID=k.ProductSubcategoryID
-left join `focus-infusion-348919.raw_zone.ProductCategory` l on k.ProductCategoryID=l.ProductCategoryID
-left join `focus-infusion-348919.raw_zone.ProductModel` m on j.ProductModelID=m.ProductModelID
+from `raw_zone.Product` j
+left join `raw_zone.ProductSubcategory` k on j.ProductSubcategoryID=k.ProductSubcategoryID
+left join `raw_zone.ProductCategory` l on k.ProductCategoryID=l.ProductCategoryID
+left join `raw_zone.ProductModel` m on j.ProductModelID=m.ProductModelID
 where j.FinishedGoodsFlag = TRUE ;
 
-select count(1),count(distinct ProductoID) from `focus-infusion-348919.staging_zone.DimProducto`;
+select count(1),count(distinct ProductoID) from `staging_zone.DimProducto`;
 
 
-DROP TABLE IF EXISTS `focus-infusion-348919.staging_zone.FactVentas`;
-CREATE TABLE `focus-infusion-348919.staging_zone.FactVentas` 
+CREATE OR REPLACE TABLE `staging_zone.FactVentas` 
 partition by date(FechaVenta)
 AS
 select  A.SalesOrderID VentaID,
@@ -155,9 +136,9 @@ select  A.SalesOrderID VentaID,
         B.ProductID as ProductoID,
         B.OrderQty as Cantidad,
         B.LineTotal as Monto)) AS Detalle
-FROM `focus-infusion-348919.raw_zone.SalesOrderHeader` A
-    LEFT JOIN `focus-infusion-348919.raw_zone.SalesOrderDetail` B ON A.SalesOrderID=B.SalesOrderID
-    LEFT JOIN `focus-infusion-348919.raw_zone.Customer` C ON A.CustomerID=C.CustomerID
+FROM `raw_zone.SalesOrderHeader` A
+    LEFT JOIN `raw_zone.SalesOrderDetail` B ON A.SalesOrderID=B.SalesOrderID
+    LEFT JOIN `raw_zone.Customer` C ON A.CustomerID=C.CustomerID
 group by a.SalesOrderID,
         a.OrderDate,
         a.OnlineOrderFlag,
@@ -167,4 +148,4 @@ group by a.SalesOrderID,
         a.SalesPersonID,
         a.TerritoryID;
 
-select count(1),count(distinct VentaID) from `focus-infusion-348919.staging_zone.FactVentas`;
+select count(1),count(distinct VentaID) from `staging_zone.FactVentas`;

@@ -1,8 +1,9 @@
-CREATE SCHEMA IF not EXISTS analytics_zone;
+SET @@dataset_project_id = 'secret-footing-366022';
 
+CREATE SCHEMA IF not EXISTS analytics_zone OPTIONS(location="us-east1");
 
-DROP TABLE IF EXISTS `focus-infusion-348919.analytics_zone.TablonVentas`;
-CREATE TABLE `focus-infusion-348919.analytics_zone.TablonVentas`
+DROP TABLE IF EXISTS `analytics_zone.TablonVentas`;
+CREATE TABLE `analytics_zone.TablonVentas`
 partition by date(FechaVenta)
 AS
 SELECT A.VentaID,A.FechaVenta,A.FlagVentaOnline,A.Estado,A.Items,A.MontoTotal,A.Detalle,
@@ -26,13 +27,13 @@ array_agg(STRUCT(
         STRUCT(E.ProductoID,E.Producto,E.CodigoProducto,E.FlagProductoTerminado,E.Color,E.CostoEstandar,E.PrecioLista,E.SubCategoria,E.Categoria,E.Modelo) AS Producto,
         D.Cantidad,
         D.Monto)) AS Detalle
-FROM `focus-infusion-348919.staging_zone.FactVentas`A, UNNEST(Detalle) as D
-LEFT JOIN `focus-infusion-348919.staging_zone.DimProducto` E ON D.ProductoID=E.ProductoID
+FROM `staging_zone.FactVentas`A, UNNEST(Detalle) as D
+LEFT JOIN `staging_zone.DimProducto` E ON D.ProductoID=E.ProductoID
 GROUP BY A.VentaID,A.FechaVenta,A.FlagVentaOnline,A.Estado,A.ClienteID,A.DistribuidorID,A.VendedorID,A.TerritorioID,A.Items,A.MontoTotal) A 
-LEFT JOIN `focus-infusion-348919.staging_zone.DimCliente` B ON A.ClienteID=B.ClienteID
-LEFT JOIN `focus-infusion-348919.staging_zone.DimDistribuidor` C ON A.DistribuidorID=C.DistribuidorID
-LEFT JOIN `focus-infusion-348919.staging_zone.DimTerritorio` D ON A.TerritorioID=D.TerritorioID
-LEFT JOIN `focus-infusion-348919.staging_zone.DimVendedor` E ON A.VendedorID=E.VendedorID;
+LEFT JOIN `staging_zone.DimCliente` B ON A.ClienteID=B.ClienteID
+LEFT JOIN `staging_zone.DimDistribuidor` C ON A.DistribuidorID=C.DistribuidorID
+LEFT JOIN `staging_zone.DimTerritorio` D ON A.TerritorioID=D.TerritorioID
+LEFT JOIN `staging_zone.DimVendedor` E ON A.VendedorID=E.VendedorID;
 
 
-select count(1),count(distinct VentaID) from `focus-infusion-348919.analytics_zone.TablonVentas`;
+select count(1),count(distinct VentaID) from `analytics_zone.TablonVentas`;
