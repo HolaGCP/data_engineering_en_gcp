@@ -1,4 +1,4 @@
-$folder="4_bigquery_llevando_datos/laboratorio_2/data"
+folder="4_bigquery_llevando_datos/laboratorio_2/data"
 bq mk --dataset --location us-east1 raw_zone
 bq --location=us-east1 load --source_format=CSV --replace --skip_leading_rows=1 --allow_quoted_newlines raw_zone.Address $folder/Address.csv schemas/Address.json
 bq --location=us-east1 load --source_format=CSV --replace --skip_leading_rows=1 --allow_quoted_newlines raw_zone.AddressType $folder/AddressType.csv schemas/AddressType.json
