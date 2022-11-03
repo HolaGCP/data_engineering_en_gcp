@@ -1,17 +1,22 @@
-1.- Instalar las dependencias con el comando
+# Laboratorio de Patrones de ingesta
 
-> pip install -r requirements.txt 
+1.- Crear el ambiente e instalar las dependencias.
 
-2.- Descargar las credenciales para acceder al proyecto en google cloud
+```bash
+cd 2_cloud_storage_inicio/patrones_ingesta_lab/
+python3 -m venv .venv
+source .venv/bin/activate && pip install --upgrade pip
+pip install -r requirements.txt 
+```
 
-> gcloud auth application-default login
+2.- Ejecutar el script del patrón de ingesta descarga de archivos
 
-3.- Declarar la variable de entorno GOOGLE_APPLICATION_CREDENTIALS apuntando a la ubicación del archivo json que contiene las credenciales
+```bash
+python descarga_archivos.py
+```
 
-4.- Ejecutar el script del patrón de ingesta descarga de archivos
+3.- Ejecutar el script del patrón de ingesta parseo de textos
 
-> python descarga_archivos.py
-
-5.- Ejecutar el script del patrón de ingesta parseo de textos
-
-> python parseo_textos.py
+```bash
+python parseo_textos.py
+```
