@@ -21,9 +21,11 @@ cloudshell ws $HOME/data_engineering_en_gcp
 
 1. Crea un cluster de Dataproc con Jupyter. [Tutorial](https://cloud.google.com/dataproc/docs/tutorials/jupyter-notebook)
 
-2. [Ejecuta los notebooks en el cluster.](2_spark_bigquery.ipynb)
+2. [Ejecuta el notebook de spark con Cloud Storage](1_spark_cloud_storage.ipynb)
 
-3. Ejecuta jobs en el cluster por línea de comandos.
+3. [Ejecuta el notebook de spark con Bigquery.](2_spark_bigquery.ipynb)
+
+4. Ejecuta jobs en el cluster por línea de comandos.
 
 ```bash
 (cd 5_dataproc_inicio/laboratorio_1/ &&
