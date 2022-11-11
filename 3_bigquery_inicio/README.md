@@ -1,5 +1,5 @@
 
-# Sesión 03 - Primeros Pasos con BigQuery
+# Primeros Pasos con BigQuery
 
 # Actividades:
 

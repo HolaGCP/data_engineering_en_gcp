@@ -1,4 +1,4 @@
-# Laboratorio de Patrones de ingesta
+# Laboratorio: Probando los Patrones de Ingesta
 
 ## Antes de Empezar
 

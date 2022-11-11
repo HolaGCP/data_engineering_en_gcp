@@ -1,4 +1,4 @@
-# Sesión 02 - Cloud Storage
+# Primeros pasos con Cloud Storage
 
 # Actividades:
 
@@ -15,6 +15,8 @@
 6. [Cómo transferir tus datos a Google Cloud (Resumen de Opciones) - Video](https://cloud.google.com/blog/topics/developers-practitioners/how-transfer-your-data-google-cloud)
 
 7. [Laboratorio: Jugando con el SDK de python de Cloud Storage](laboratorio.md)
+
+8. [Laboratorio: Probando los patrones de ingesta](patrones_ingesta_lab/README.md)
 
 # Videos Adicionales:
 
