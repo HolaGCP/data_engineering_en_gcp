@@ -8,10 +8,4 @@
 
 3. [Crea un cluster de Dataproc con Jupyter instalado](https://cloud.google.com/dataproc/docs/concepts/components/jupyter#install_jupyter)
 
-4. [Ejecuta los notebooks desde jupyter]
-
-5. [Ejecuta los jobs usando la linea de comandos]
-
-6. [Ejecuta jobs usando workflow template]
-
-7. [Ejecuta comandos usando spark serverless]
+4. [Ejecuta el laboratorio](laboratorio_1/README.md)

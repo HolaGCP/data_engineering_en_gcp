@@ -35,14 +35,15 @@ unzip BTCUSDT-1m-2022-07.zip
 gsutil cp BTCUSDT-1m-2022-07.csv gs://$project/binance-data/BTCUSDT-1m-2022-07.csv
 ```
 
-2. Cargar la tabla desde la consola de gcp.
+4. Cargar la tabla desde la consola de gcp.
 
-3. Cargar la tabla desde la linea de comandos.
+5. Cargar la tabla desde la linea de comandos.
 
 ```bash
+bq mk --dataset --location us-east1 binance
 bq load --source_format=CSV --replace --allow_quoted_newlines binance.BTCUSDT gs://$project/binance-data/BTCUSDT-1m-2022-07.csv 3_bigquery_inicio/schema.json
 ```
 
-4. Cargar la tabla con el transfer service.
+6. Cargar la tabla con el transfer service.
 
-5. Crear el transfer service con linea de comandos.
+7. Crear el transfer service con linea de comandos.
