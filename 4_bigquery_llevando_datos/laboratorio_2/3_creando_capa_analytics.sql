@@ -1,4 +1,4 @@
-SET @@dataset_project_id = 'secret-footing-366022';
+--SET @@dataset_project_id = 'secret-footing-366022';
 
 CREATE SCHEMA IF not EXISTS analytics_zone OPTIONS(location="us-east1");
 

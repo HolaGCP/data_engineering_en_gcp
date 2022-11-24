@@ -10,7 +10,7 @@ bq_dataset_name = "airflow_bq_notify_dataset_{{ ds_nodash }}"
 bq_recent_questions_table_id = "recent_questions"
 gcs_bucket = "{{ var.value.gcs_bucket }}"
 output_file = f"{gcs_bucket}/recent_questions.csv"
-location = "us-east1"
+location = "US"
 project_id = "{{ var.value.gcp_project }}"
 
 max_query_date = "2018-02-01"
@@ -60,7 +60,7 @@ with models.DAG(
                 },
             }
         },
-        location="US",
+        location=location,
     )
 
     export_questions_to_gcs = bigquery_to_gcs.BigQueryToGCSOperator(
