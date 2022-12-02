@@ -28,7 +28,7 @@ cloudshell ws $HOME/data_engineering_en_gcp
 4. Ejecuta jobs en el cluster por línea de comandos.
 
 ```bash
-(cd 5_dataproc_inicio/laboratorio_1/ &&
+(cd 5_dataproc/laboratorio_1/ &&
  gcloud dataproc jobs submit pyspark bigquery_spark.py \
     --cluster=cluster-fdd3 \
     --region=us-east1 \
@@ -42,7 +42,7 @@ cloudshell ws $HOME/data_engineering_en_gcp
 
 ```bash
 project=$(gcloud config get project)
-(cd 5_dataproc_inicio/laboratorio_1/ &&
+(cd 5_dataproc/laboratorio_1/ &&
 gsutil cp bigquery_spark.py gs://$project/dataproc/bigquery_spark.py
 )
 ```
@@ -84,7 +84,7 @@ gcloud dataproc workflow-templates instantiate my-workflow \
 6. Puedes exportar el workflow a un archivo yaml
 
 ```bash
-(cd 5_dataproc_inicio/laboratorio_1/ &&
+(cd 5_dataproc/laboratorio_1/ &&
 gcloud dataproc workflow-templates export my-workflow \
     --destination=template.yaml \
     --region=us-east1
@@ -95,7 +95,7 @@ gcloud dataproc workflow-templates export my-workflow \
 
 ```bash
 
-(cd 5_dataproc_inicio/laboratorio_1/ &&
+(cd 5_dataproc/laboratorio_1/ &&
 gcloud dataproc workflow-templates import my-workflow \
     --source=template.yaml \
     --region=us-east1
