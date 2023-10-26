@@ -2,7 +2,7 @@
 .venv
 .ipynb_checkpoints
 .DS_Store
-*ppt*
+*pptx
 *.code-workspace
 proyectos*
 trabajos_grupales*
