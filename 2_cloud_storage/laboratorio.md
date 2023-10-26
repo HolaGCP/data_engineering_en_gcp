@@ -1,6 +1,12 @@
 # Laboratorio: Jugando con el SDK de python de Cloud Storage
 
-## Crea una instancia de notebooks administrados
+## OPCION 1: Usando Colab
+
+Abre el notebook de ["1. Líbrería de Cliente"](https://drive.google.com/file/d/1njBh-a7iUmEC2Hux2vwAR9cYDuyN_Kdw/view?usp=sharing) en Colab.
+
+## OPCION 2: Usando Vertex AI Workbench
+
+### Crea una instancia de notebooks administrados
 
 En esta sección, configurarás una instancia de JupyterLab en Google Cloud para que puedas crear notebooks administrados.
 
@@ -20,13 +26,13 @@ En esta sección, configurarás una instancia de JupyterLab en Google Cloud para
 
 Espera unos minutos hasta que se cree la instancia. Vertex AI Workbench inicia la instancia de forma automática. Cuando la instancia está lista para usarse, Vertex AI Workbench activa un vínculo Abrir JupyterLab.
 
-## Clona el repositorio en el notebook.
+### Clona el repositorio en el notebook.
 
 1. En la pestaña git, hacer click en "Clone a Repository".
 
 2. En la ventana que aparece poner la url del repo "https://github.com/HolaGCP/data_engineering_en_gcp.git"
 
-## Experimenta con los notebooks
+### Experimenta con los notebooks
 
 1. Abre el notebook de ["1. Líbrería de Cliente"](./1.%20Librer%C3%ADa%20de%20Cliente.ipynb)
 

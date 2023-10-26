@@ -20,7 +20,7 @@ cloudshell ws $HOME/data_engineering_en_gcp
 1.- Crear el ambiente e instalar las dependencias.
 
 ```bash
-cd 2_cloud_storage_inicio/patrones_ingesta_lab/
+cd 2_cloud_storage/patrones_ingesta_lab/
 python3 -m venv .venv
 source .venv/bin/activate && pip install --upgrade pip
 pip install -r requirements.txt 

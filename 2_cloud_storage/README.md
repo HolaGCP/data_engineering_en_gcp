@@ -35,5 +35,3 @@
 3. [Trabajando con Big Data](https://cloud.google.com/storage/docs/working-with-big-data)
 
 4. [Cloud storage como Data Lake](https://cloud.google.com/architecture/build-a-data-lake-on-gcp)
-
-# Preguntas Frecuentes:
